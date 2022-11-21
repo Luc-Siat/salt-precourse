@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Xla8TH0qbcLGP8iy4BYY6IwkGyZLVmqG+7OqYv1fvMA=",
+  "Source": "myFirstDotNetWebServer",
+  "BasePath": "_content/myFirstDotNetWebServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

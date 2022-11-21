@@ -1,0 +1,14 @@
+.positive {
+  background-color: black; color: whitesmoke;
+}
+.negative{
+  background-color: darkgrey; color: white;
+}
+.huge {
+  font-size: xx-large;
+}
+img[src="https://media.giphy.com/media/Z890hxb6fSrbG/giphy.gif"] {
+  border-radius: 50%;
+  height: 400px;
+  width: 400px;
+}
