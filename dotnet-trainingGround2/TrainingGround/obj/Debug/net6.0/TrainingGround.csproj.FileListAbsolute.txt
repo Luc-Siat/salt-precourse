@@ -1,0 +1,12 @@
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/bin/Debug/net6.0/TrainingGround.deps.json
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/bin/Debug/net6.0/TrainingGround.dll
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/bin/Debug/net6.0/TrainingGround.pdb
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.csproj.AssemblyReference.cache
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.GeneratedMSBuildEditorConfig.editorconfig
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.AssemblyInfoInputs.cache
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.AssemblyInfo.cs
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.csproj.CoreCompileInputs.cache
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.dll
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/refint/TrainingGround.dll
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/TrainingGround.pdb
+/home/luc/salt/precourse/dotnet-trainingGround/TrainingGround/obj/Debug/net6.0/ref/TrainingGround.dll
