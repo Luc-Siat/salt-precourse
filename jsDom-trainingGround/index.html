@@ -5,25 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Javascript training ground</title>
-  <script>
-    function getCompanyName() {
-      return "SALT";
-    }
-    </script>
+  <script src="function.js"></script>
+  <script>console.log("salt> In the head.");</script>
 </head>
 <body>
-  <script>
-    console.log("salt> In the body");
-    </script>
   <main>
-    <div>Content</div>
-    <div>Content</div>
-    <div>Content</div>
+      <div  name="content" class="big bold bright">Content 1</div>
+      <div class="big bold" id="companyName">Content 2</div>
+      <div name="content" class="big">Content 3</div>
+    <script>
+      myFunctions.addListInMain(3);
+    const companyName = myFunctions.getCompanyName();
+    const companyNameElement = document.querySelector('#companyName');
+    companyNameElement.innerHTML = companyName + ' set using a query selector by id';
+
+    const boldNodesQuerySelected = document.querySelectorAll('.bold');
+      for (let i = 0; i < boldNodesQuerySelected.length; i++) {
+        boldNodesQuerySelected[i].innerHTML += '... and bold selected with query'
+      }
+    myFunctions.divRemover("companyName");
+    myFunctions.divRemover("companyName");
+    </script>
+
   </main>
-  <script>
-    console.log("salt> End of body");
-    const name = getCompanyName()
-    console.log(`salt> In the head ${name}`);
-  </script>
+
 </body>
 </html>

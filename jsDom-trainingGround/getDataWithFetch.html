@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function getUsers(element) {
+      fetch('https://randomuser.me/api/?gender=female&results=20')
+        .then(response => response.json())
+        .then(data => {
+          const divList = document.createElement('div');
+          divList.classList.add('users');
+          for (i= 0; i < data.results.length; i++) {
+            const user = data.results[i];
+
+
+            const h2 = document.createElement('h2');
+            h2.textContent = user.name.first + " "+ user.name.last;
+
+            const img = document.createElement('img');
+            img.src = user.picture.medium;
+
+
+            const div = document.createElement('div');
+            div.appendChild(h2);
+            div.appendChild(img);
+            divList.appendChild(div);
+            element.appendChild(divList);
+          }
+        });
+
+    }
+    getUsers();
+  </script>
+</head>
+<body>
+  <main>
+    <input type="text">
+    <button id="btnSearch"></button>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const element = document.querySelector("main");
+      getUsers(element);
+    })
+
+    function filterByInput() {
+      const input = document.querySelector('input').value;
+      const users = document.querySelectorAll('div');
+      users[0].textContent = "";
+
+      for (i = 1; i < users.length; i++) {
+
+        console.log(users[i]);
+        const userName =  users[i].querySelector('h2').textContent;
+        console.log(userName);
+        if (userName.includes(input))
+        {
+          console.log("bru");
+
+          users[0].appendChild(users[i]);
+          continue
+        }
+        continue
+
+      }
+    }
+    const btn = document.getElementById('btnSearch');
+    btn.onclick = () => {
+      filterByInput();
+    }
+  </script>
+</body>
+</html>

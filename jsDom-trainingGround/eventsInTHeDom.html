@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+  function addStyleBasedOfContent(element, content) {
+    const convertedNumber = Number(content);
+
+    if(Number.isNaN(convertedNumber)) {
+      return;
+    }
+    if(convertedNumber < 0) {
+      element.classList.add('negativeResult');
+      return;
+    }
+    element.classList.add('positiveResult');
+  }
+  function addResultStyling() {
+    const mainResultElements = document.querySelectorAll('.mainResult');
+
+    for (let i = 0; i < mainResultElements.length; i++) {
+      const content = mainResultElements[i].textContent;
+
+      addStyleBasedOfContent(mainResultElements[i], content);
+    }
+  }
+  function invertColorsOfResults() {
+    const mainResultElements = document.querySelectorAll('.mainResult')
+
+    for (let i = 0; i < mainResultElements.length; i++) {
+      const element = mainResultElements[i];
+
+      if(element.classList.contains('positiveResult')){
+        element.classList.remove('positiveResult')
+        element.classList.add('negativeResult')
+        continue
+      }
+
+      if(element.classList.contains('negativeResult')){
+        element.classList.remove('negativeResult')
+        element.classList.add('positiveResult')
+        continue
+      }
+
+    }
+  }
+  function toggleButtonIfOppositeResults() {
+
+    const positiveResult = document.querySelector('.positiveResult');
+    const negativeResult = document.querySelector('.negativeResult');
+
+    const button = document.querySelector('button');
+    if (positiveResult && negativeResult) {
+      button.classList.remove('disabled');
+    }
+    if (!positiveResult && !negativeResult && !button.classList.contains('disabled'))
+    {
+      button.classList.add('disabled');
+    }
+  }
+  </script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1 class="mainResult">1000</h1>
+    <h1 class="mainResult">-1000</h1>
+    <h1 class="mainResult">A name - not a number</h1>
+    <button id="btnInversion" class="disabled">Invert</button>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log("Document is loaded, y'all")
+        addResultStyling();
+      });
+      document.addEventListener('DOMContentLoaded', function () {
+        toggleButtonIfOppositeResults();
+      })
+      const btn = document.getElementById('btnInversion');
+      btn.addEventListener('click', () => {
+        invertColorsOfResults();
+      });
+      </script>
+  </main>
+</body>
+</html>

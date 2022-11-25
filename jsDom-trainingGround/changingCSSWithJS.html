@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1 class="mainResult">1000</h1>
+    <h1 class="mainResult">-1000</h1>
+    <h1 class="mainResult">A name - not a number</h1>
+  </main>
+  <script>
+    const classedElements = document.querySelectorAll('.mainResult')
+    for (i =0; i < classedElements.length; i++) {
+      console.log(typeof(classedElements[i]));
+      if (classedElements[i].textContent < 0)
+      {
+        classedElements[i].classList.add("negativeResult")
+      }
+      if (classedElements[i].textContent >= 0)
+      {
+        classedElements[i].classList.add("positiveResult")
+      }
+    }
+  </script>
+</body>
+</html>
