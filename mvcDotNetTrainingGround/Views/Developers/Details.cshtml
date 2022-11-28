@@ -1,0 +1,23 @@
+@using mvcDotNetTrainingGround.Models;
+
+@model DeveloperViewModel
+
+<h1>@Model.Name</h1>
+<ul>
+  <li>Id: @Model.Id</li>
+  <li>@Html.DisplayNameFor(m => m.Name) : @Model.Name</li>
+  <li>@Html.DisplayNameFor(m => m.Email) : @Model.Email</li>
+</ul>
+
+<a
+  asp-controller = "Developers"
+  asp-action = "Index"
+>
+  Developers
+</a>
+<br>
+  <a
+    asp-controller= "Developers"
+    asp-action= "Create">
+    Create a new developer
+  </a>

@@ -1,0 +1,18 @@
+@using mvcDotNetTrainingGround.Models;
+
+@model CreateNewDeveloperViewModel;
+
+<h1>Add a new dev</h1>
+<a
+  asp-controller = "Developers"
+  asp-action = "Index"
+>
+  Developers
+</a>
+
+
+<form asp-controller="Developers" asp-action="Create" method="post">
+  @Html.DisplayNameFor(m => m.Name): <input asp-for="Name" /> <br />
+  @Html.DisplayNameFor(m => m.Email): <input asp-for="Email" /> <br />
+  <button type="submit">Create new developer</button>
+</form>

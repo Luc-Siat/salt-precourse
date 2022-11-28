@@ -1,0 +1,51 @@
+@using mvcDotNetTrainingGround.Models;
+
+@model List<DeveloperViewModel>
+  <h1>Showing @Model.Count developers</h1>
+
+    <br>
+    <a
+      asp-controller= "Developers"
+      asp-action= "Create">
+      Create a new developer
+    </a>
+
+
+  <table style="width: 100%"">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    @for (int i = 0; i < Model.Count; i ++)
+    {
+      var developer = Model[i];
+      var style ="";
+      if ( i % 2 == 0) {
+        style = "background-color: lightgray;";
+      }
+      <tr style= "@style">
+        <td>@developer.Name</td>
+        <td>@developer.Email</td>
+        <td>
+          <a href="/Developers/Details/@developer.Id"> details </a>
+          @* <a
+          asp-controller ="Developers"
+          asp-action = "Details"
+          asp-route-id = @developer.Id
+          > details
+          </a> *@
+        </td>
+      </tr>
+    }
+  </table>
+  <br>
+
+  <a
+    asp-controller = "Developers"
+    asp-action = "Index"
+  >
+    Developers
+  </a>
