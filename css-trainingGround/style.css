@@ -1,14 +1,78 @@
-.positive {
-  background-color: black; color: whitesmoke;
+body {
+  color: white;
+  font-weight: lighter;
 }
-.negative{
-  background-color: darkgrey; color: white;
+
+a{
+  color: white;
+  font-weight: normal;
+
 }
-.huge {
-  font-size: xx-large;
+a:hover{
+  color: #C9D1D9;
+  text-decoration: none;
 }
-img[src="https://media.giphy.com/media/Z890hxb6fSrbG/giphy.gif"] {
+
+.navbar{
+  display: flex;
+  background-color: #161B22;
+  align-items: center;
+}
+
+.main-navbar{
+display: flex;
+align-items: center;
+}
+
+.main-navbar > * {
+  margin: .5em;
+  align-items: center;
+}
+
+.user-navbar{
+
+}
+
+.user-navbar > * {
+  margin: 5px;;
+}
+
+.logo{
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
-  height: 400px;
-  width: 400px;
+}
+
+.avatar{
+  border-radius: 50%;
+}
+
+.searchbar{
+  border: 1px solid #30363D;
+  background-color: #161B22;
+  border-radius: 8px;
+  width: 350px;
+  padding: 0;
+  margin: auto;
+}
+
+.searchbar .form-control{
+  margin: 2px;
+  background-color: black;
+  border: none;
+  color: #B7C3A9;
+  border-radius: 8px;
+  padding: 0px 12px;
+  height: 100%;
+}
+
+.searchbar .btn{
+  margin: 2px;
+  color:#979A9C ;
+  border: 1px solid #30363D;
+  margin-left: auto;
+  border-radius: 8px;
+}
+.searchbar .btn:hover{
+  background-color: #0D1117;
 }
