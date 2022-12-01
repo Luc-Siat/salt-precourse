@@ -1,7 +1,29 @@
 body {
   width: 100%;
-
+}
+a {
+  text-decoration: none;
 }
 .form-outline{
    flex-grow: 1;
+}
+
+.navbar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5DA6F8;
+}
+.navbar > * {
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.banner{
+  color: white;
+  text-align: center;
+  padding: 200px 0;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/15/Address_book_1.jpg);
 }

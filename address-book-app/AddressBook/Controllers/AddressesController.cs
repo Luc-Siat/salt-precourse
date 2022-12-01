@@ -19,7 +19,7 @@ public class AddressesController : ControllerBase
     var ListOfAddressResponse = new List<CreateAddressResponse>();
     foreach (var address in _db.Addresses)
     {
-      var addressResponse = new CreateAddressResponse(){Id= address.Id, StreetNo = address.StreetNo, StreetName = address.StreetName, City= address.City };
+      var addressResponse = new CreateAddressResponse(){Id= address.Id, Name = address.Name, StreetNo = address.StreetNo, StreetName = address.StreetName, City= address.City };
       ListOfAddressResponse.Add(addressResponse);
     }
     return ListOfAddressResponse;
