@@ -8,13 +8,11 @@ public class DevelopersControllerTests
   public void checking_index()
   {
     // arrange
-    var controller = new DevelopersController();
+
     // act
-    var result = controller.Index();
+
     // assert
-    var redirectToActionResult =
-      Assert.IsType<redirectToActionResult>(result);
-    Assert.Equal("Index", redirectToActionResult.ActionName);
+    Assert.Equal(
   }
 //   [Fact]
 //   public void checking_create()
