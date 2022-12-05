@@ -17,7 +17,7 @@
   <div class="banner w-100 mb-5">
     <h1>The address book</h1>
   </div>
-  <main class="container">
+  <header>
     <h2 class="text-center"> Saved Adresses</h2>
     <div class="input-group rounded">
       <input type="search" class="form-control rounded" placeholder="Search an address" aria-label="Search" aria-describedby="search-addon" />
@@ -25,8 +25,33 @@
         <i class="fas fa-search"></i>
       </span>
     </div>
+  </header>
+  <br class="container">
     <br>
+    <div class="cards">
 
+    </div>
+    <form class="w-70 m-auto">
+      <div class="form-group">
+        <label for="Name">Address name</label>
+        <input type="Name" class="form-control" id="Name" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="StreetName">street name</label>
+        <input type="StreetName" class="form-control" id="StreetName" placeholder="Street name">
+      </div>
+      <div class="form-group">
+        <label for="StreetNo">street no</label>
+        <input type="StreetNo" class="form-control" id="StreetNo" placeholder="Street no">
+      </div>
+      <div class="form-group">
+        <label for="City">City</label>
+        <input type="City" class="form-control" id="City" placeholder="city">
+      </div>
+      <button type="submit" class="btn btn-primary address-submit">Submit</button>
+    </form>
+    </br>
+    <a href="" class="all-addresses">Back to all adresses</a>
   </main>
 
   <script src="function.js"></script>
