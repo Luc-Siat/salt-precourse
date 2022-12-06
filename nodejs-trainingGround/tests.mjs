@@ -55,13 +55,22 @@ describe('age classifier', () => {
     // assert
     assert.equal(result, 'you are just old');
   })
+  it('check all ages', () => {
+
+    for (let i = 0; i < 100; i++) {
+      // act
+      const result = getAgeGroup(i, 2022);
+      // assert
+      console.log(`${i} is ${result}`)
+    }
+  });
 })
 
 describe('constant and variables', () => {
-  it.skip('constant means constant', () => {
-    const aNumber = 1;
-    aNumber = 2;
-  });
+  // it.skip('constant means constant', () => {
+  //   const aNumber = 1;
+  //   aNumber = 2;
+  // });
   it('you can change a let variable', () => {
     // arrange
     let aNumber = 1;
@@ -79,4 +88,63 @@ describe('constant and variables', () => {
     assert.equal('undefined', typeof aNumber);
     assert.equal(undefined, aNumber);
   })
+});
+
+describe('loops does things over and over', () => {
+  it('while-loops just keeps going unless we stop them', () => {
+    // arrange
+    let counter = 0;
+
+    // act
+    while (counter < 2) {
+      console.log(`Counter is now '${counter}'`);
+
+      counter = counter + 1;
+    };
+  });
+  it('adding elements to array with push', () => {
+    // arrange
+    const names = ['Marcus','Eliza','Obaid'];
+    assert.equal(names.length, 3);
+
+    // act
+    names.push('Arvid');
+    names.pop();
+    names.splice(0, 1);
+    names.push('Arvid')
+    // assert
+    assert.equal(names.length, 3);
+    assert.equal(names[2], 'Arvid');
+    assert.equal(names[0], 'Eliza');
+  })
+  describe('object are for building things', () => {
+    it('our first object - a human', () => {
+      // act
+      const person = {
+        name: 'Marcus',
+        birthYear: 1972,
+        isTeacher: true
+      };
+
+      // assert
+      assert.equal(person.name, 'Marcus')
+      assert.equal(person.birthYear, 1972)
+      assert.equal(person.isTeacher, true);
+    })
+  })
+  it('get age for person', () => {
+    // arrange
+    const currentYear = 2022;
+    const person = {
+      name: 'Marcus',
+      birthYear: 1972,
+      isTeacher: true
+    };
+
+    // act
+    const age = getAgeForPerson(person, currentYear);
+
+    // assert
+    assert.equal(age, 50);
+  });
 });
