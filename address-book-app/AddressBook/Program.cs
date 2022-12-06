@@ -3,15 +3,16 @@ using AddressBook.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(
-        policy  =>
-        {
-            policy.WithOrigins("http://127.0.0.1",
-                                "http://localhost:5001");
-        });
-});
+// builder.Services.AddCors(options =>
+// {
+//     options.AddDefaultPolicy(
+//         policy  =>
+//         {
+//             policy.WithOrigins("http://127.0.0.1",
+//                                 "http://localhost:5001");
+//         });
+// });
+// Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
 // Add services to the container.
 var db = new Db();

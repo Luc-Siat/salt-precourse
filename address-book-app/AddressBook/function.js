@@ -1,16 +1,15 @@
 // create cards portion
 
 function dataAddressToHtml(address) {
-  return `
-  <div class="card mt-5 mb-5 m-auto" style="width: 18rem;">
+  return `<div class="card mt-5 mb-5 m-auto" style="width: 18rem;">
   <div class="card-body">
   <h5 class="card-title">${address.name}</h5>
   <h6 class="card-subtitle mb-2 text-muted">${address.city}</h6>
   <p class="card-text">${address.streetName} ${address.streetNo}</p>
-  <a href="#" class="card-link address" value="${address.id}">More details</a>
+  <a href="#" class="card-link address" id="${address.id}">More details</a>
   </div>
   </div>
-  `
+  `;
 }
 
 function getAddresses() {
@@ -18,27 +17,54 @@ function getAddresses() {
   .then(response => response.json())
   // .then(data => console.log(data))
   .then(data => {
-    outData(data)
+    printData(data)
   })
 };
 
-function outData(data){
+function printData(data){
   const cards = document.querySelector(".cards");
   cards.innerHTML = "";
-  data.forEach(address => {
-    var addressInHtml = dataAddressToHtml(address);
+  if (data[1]) {
+    data.forEach(address => {
+      var addressInHtml = dataAddressToHtml(address);
+      cards.insertAdjacentHTML("beforeend", addressInHtml);
+    });
+    accessDetails();
+  }
+  if (data[0] && !data[1]){
+    var addressInHtml = dataAddressToHtml(data[0]);
     cards.insertAdjacentHTML("beforeend", addressInHtml);
-  });
+  }
+
+  if (!data[0]) {
+    console.log(data);
+    var addressInHtml = dataAddressToHtml(data);
+    cards.insertAdjacentHTML("beforeend", addressInHtml);
+  }
 }
 
 // LOAD THE CARDS BUTTON
 
 getAddresses();
-document.addEventListener('DOMContentLoaded', accessDetails);
+
+
+function getDetails(addressId){
+  fetch(`http://localhost:5001/api/Addresses/id/${addressId}`)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data)
+    printData(data)
+  })
+}
 
 function accessDetails(){
-  const addressLink = document.querySelectorAll(".address");
-  // console.log(addressLink);
+  const addressLinks = document.querySelectorAll(".address");
+  addressLinks.forEach(address => {
+    address.addEventListener( 'click', (event) => {
+      event.preventDefault();
+      getDetails(address.id);
+    })
+  });
 }
 
 const allAddresses = document.querySelector(".all-addresses");
@@ -46,7 +72,22 @@ allAddresses.addEventListener('click', () => {
   getAddresses();
 })
 
+// SEARCH AN ADDRESS
 
+function searchAddress(searchInput){
+  fetch(`http://localhost:5001/api/Addresses/search/${searchInput}`)
+  .then(response => response.json())
+  .then(data => {
+    printData(data);
+  })
+}
+
+const searchButton = document.querySelector(".search-btn");
+searchButton.addEventListener( 'click', (event) => {
+  event.preventDefault()
+  const searchInput = document.querySelector(".search-input").value;
+  searchAddress(searchInput)
+})
 
 
 

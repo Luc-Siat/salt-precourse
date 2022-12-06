@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using AddressBook.Models;
+using System;
+using Microsoft.AspNet.WebApi.Core;
+using System.Web.Http.Filters;
+
 
 
 namespace AddressBook.Controllers;
@@ -76,38 +80,51 @@ public class AddressesController : ControllerBase
   }
 
 
-  // [Route("/api/[controller]/search/{stringParameter}")]
-  // [HttpGet("{stringParameter}")]
-  // public List<CreateAddressResponse> GetAdressesByString(string stringParameter)
-  // {
-  //   List<Address> matchingAddresses = new List<Address>();
+  [HttpGet("search/{stringParameter}")]
+  public List<CreateAddressResponse> SearchAdressesByString(string stringParameter)
+  {
+    List<Address> matchingAddresses = new List<Address>();
 
-  //     foreach (var address in _db.Addresses)
-  //   {
-  //     if (address.Name == stringParameter)
-  //       {
-  //         matchingAddresses.Add(address);
-  //       }
-  //     if (address.StreetName == stringParameter)
-  //       {
-  //         matchingAddresses.Add(address);
-  //       }
-  //     if (address.City == stringParameter)
-  //       {
-  //         matchingAddresses.Add(address);
-  //       }
-  //   }
+      foreach (var address in _db.Addresses)
+    {
+
+      stringParameter = stringParameter.ToLower();
+      if (address.Name.ToLower() == stringParameter)
+        {
+          matchingAddresses.Add(address);
+        }
+      if (address.StreetName.ToLower() == stringParameter)
+        {
+          matchingAddresses.Add(address);
+        }
+      if (address.City.ToLower() == stringParameter)
+        {
+          matchingAddresses.Add(address);
+        }
+    }
 
 
-  //   var ListOfAddressesResponse = new  List<CreateAddressResponse>();
-  //   for (int i = 0; i < matchingAddresses.Count; i++ )
-  //   {
-  //     var address = matchingAddresses[i];
-  //     var addressResponse = new CreateAddressResponse() { Name= address.Name, Id= address.Id, StreetNo = address.StreetNo, StreetName = address.StreetName, City= address.City  };
-  //     ListOfAddressesResponse.Add(addressResponse);
-  //   }
-  //   return ListOfAddressesResponse;
-  // }
+    var ListOfAddressesResponse = new  List<CreateAddressResponse>();
+    for (int i = 0; i < matchingAddresses.Count; i++ )
+    {
+      var address = matchingAddresses[i];
+      var addressResponse = new CreateAddressResponse() { Name= address.Name, Id= address.Id, StreetNo = address.StreetNo, StreetName = address.StreetName, City= address.City  };
+      ListOfAddressesResponse.Add(addressResponse);
+    }
+    return ListOfAddressesResponse;
+  }
+
+
+  public class AllowCrossSiteJsonAttribute: ActionFilterAttribute
+  {
+      public override void OnActionExecuting(ActionExecutingContext filterContext)
+      {
+              filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
+          base.OnActionExecuting(filterContext);
+      }
+  }
+
 
   // REFACTO VERSION TO IMPLEMENT ONCE THE TOP ONE WORKS
 
