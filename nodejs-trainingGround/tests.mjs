@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { getAge, getAgeGroup } from './index.mjs';
+import { getAge, getAgeGroup, getAgeForPerson, divideIt, addWithLog } from './index.mjs';
 
 describe('age calculator', () => {
   it('someone born 1972 is 50 2022', () => {
@@ -61,7 +61,6 @@ describe('age classifier', () => {
       // act
       const result = getAgeGroup(i, 2022);
       // assert
-      console.log(`${i} is ${result}`)
     }
   });
 })
@@ -97,7 +96,6 @@ describe('loops does things over and over', () => {
 
     // act
     while (counter < 2) {
-      console.log(`Counter is now '${counter}'`);
 
       counter = counter + 1;
     };
@@ -147,4 +145,74 @@ describe('loops does things over and over', () => {
     // assert
     assert.equal(age, 50);
   });
+  it('a person has a list of favorite movies', () => {
+    // act
+    const person = {
+      name: 'Marcus',
+      favoriteMovies: [
+        {
+          title: 'Star Wars IV',
+          releaseYear: 1977
+        },
+        {
+          title: 'Star Wars V',
+          releaseYear: 1980,
+          actors: [{
+            chewbacca: 'Marcel'
+          },
+          {
+            luke: 'dobby'
+          }]
+        },
+        {
+          title: 'Star Wars IX',
+          releaseYear: 2017
+        }
+       ],
+    };
+    assert.equal(person.favoriteMovies.length, 3);
+    assert.equal(person.favoriteMovies[0].title, 'Star Wars IV');
+    assert.equal(person.favoriteMovies[1].releaseYear, 1980);
+    assert.equal(
+      person.favoriteMovies[person.favoriteMovies.length-1].title,
+      'Star Wars IX'
+    );
+    assert.equal(person.favoriteMovies[1].actors[0].chewbacca, 'Marcel')
+  });
+  describe('division', () => {
+    it('4 divided with 2 is 2', () => {
+
+      // act
+      const result = divideIt(4, 2);
+      // assert
+      assert.equal(result, 2);
+    })
+    it('4 divided with 0 should throw error', () => {
+      // arrange
+      try {
+        // act
+        const result = divideIt(4, 0);
+
+      } catch (error) {
+        // assert
+        assert.notEqual(error, undefined);
+        assert.equal(error.message, 'Please..no');
+      }
+    });
+    // it('throwing an error in a test will..', () => {
+    //   throw new Error('Reports as failing test')
+    // });
+  })
+  describe('callbacks', () => {
+    it('adding with logger', () => {
+      // arrange
+      const logThis2 = (message) => {
+        console.log(message);
+      }
+      // act
+      const result = addWithLog(1, 89, logThis2);
+      // assert
+      assert.equal(result, 90);
+    })
+  })
 });

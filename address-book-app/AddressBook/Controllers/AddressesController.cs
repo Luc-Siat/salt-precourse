@@ -1,12 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using AddressBook.Models;
 using System;
-using Microsoft.AspNet.WebApi.Core;
-using System.Web.Http.Filters;
-
-
 
 namespace AddressBook.Controllers;
+
 
 [ApiController]
 [Route("/api/[controller]")]
@@ -114,16 +111,6 @@ public class AddressesController : ControllerBase
     return ListOfAddressesResponse;
   }
 
-
-  public class AllowCrossSiteJsonAttribute: ActionFilterAttribute
-  {
-      public override void OnActionExecuting(ActionExecutingContext filterContext)
-      {
-              filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
-
-          base.OnActionExecuting(filterContext);
-      }
-  }
 
 
   // REFACTO VERSION TO IMPLEMENT ONCE THE TOP ONE WORKS

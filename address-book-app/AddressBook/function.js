@@ -12,15 +12,6 @@ function dataAddressToHtml(address) {
   `;
 }
 
-function getAddresses() {
-  fetch('http://localhost:5001/api/Addresses')
-  .then(response => response.json())
-  // .then(data => console.log(data))
-  .then(data => {
-    printData(data)
-  })
-};
-
 function printData(data){
   const cards = document.querySelector(".cards");
   cards.innerHTML = "";
@@ -42,6 +33,15 @@ function printData(data){
     cards.insertAdjacentHTML("beforeend", addressInHtml);
   }
 }
+
+function getAddresses() {
+  fetch('http://localhost:5001/api/Addresses')
+  .then(response => response.json())
+  // .then(data => console.log(data))
+  .then(data => {
+    printData(data)
+  })
+};
 
 // LOAD THE CARDS BUTTON
 
