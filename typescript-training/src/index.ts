@@ -54,7 +54,7 @@ function getPersonStreetNo(p :Person) :number {
 }
 
 class PersonClass {
-  name: string = '';
+  private name: string = '';
 
   birthYear: number = 0;
 
@@ -62,8 +62,22 @@ class PersonClass {
     this.name = name;
     this.birthYear = birthYear;
   }
+
+  getName() {
+    return this.name;
+  }
+}
+
+interface IPerson {
+  name: string,
+  birthYear: number,
+}
+
+function getPersonNameString(p:IPerson) : string {
+  return `${p.name}, ${p.birthYear.toString()}`;
 }
 
 export {
-  greet, isOld, countOdd, divisibleBy3, sumEven, Address, Person, getPersonStreetNo, PersonClass,
+  greet, isOld, countOdd, divisibleBy3, sumEven, Address,
+  Person, getPersonStreetNo, PersonClass, IPerson, getPersonNameString,
 };

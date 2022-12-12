@@ -1,8 +1,10 @@
 import 'mocha';
 import assert from 'assert';
 import {
-  greet, isOld, countOdd, divisibleBy3, sumEven, Person, getPersonStreetNo, PersonClass,
+  greet, isOld, countOdd, divisibleBy3, sumEven, Person,
+  getPersonStreetNo, PersonClass, IPerson, getPersonNameString,
 } from './index';
+import { EmployeeClass } from './employee';
 
 describe('test test', () => {
   it('get greetin', () => {
@@ -93,6 +95,33 @@ describe('test test', () => {
       // assert
       assert.strictEqual(streetNo, 23);
       // assert.strictEqual(typeof (person), 'person');
+    });
+    it('using classes', () => {
+      // arrange
+      const p = new PersonClass('Marcus', 1972);
+      const e = new EmployeeClass('Marcus Employee', 1972);
+
+      // act
+      e.employeeId = 12345;
+
+      // assert
+      // assert.strictEqual(p.name, 'Marcus');
+      assert.strictEqual(p.getName(), 'Marcus');
+      assert.strictEqual(e.getName(), 'Marcus Employee');
+      assert.strictEqual(e.employeeId, 12345);
+    });
+    it('print an Iperson', () => {
+      // arrange
+      const p1 :IPerson = { name: 'Marcus', birthYear: 1972 };
+      const p2 = { name: 'David', birthYear: 1975, drummer: true };
+
+      // act
+      const p1Address = getPersonNameString(p1);
+      const p2Address = getPersonNameString(p2);
+
+      // assert
+      assert.strictEqual(p1Address, 'Marcus, 1972');
+      assert.strictEqual(p2Address, 'David, 1975');
     });
   });
 });
