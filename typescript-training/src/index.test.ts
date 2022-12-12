@@ -2,9 +2,11 @@ import 'mocha';
 import assert from 'assert';
 import {
   greet, isOld, countOdd, divisibleBy3, sumEven, Person,
-  getPersonStreetNo, PersonClass, IPerson, getPersonNameString,
+  getPersonStreetNo, PersonClass, IPerson, getPersonNameString, printThis,
+  optionallyAdd, greetPeople, Address, addToStart,
 } from './index';
 import { EmployeeClass } from './employee';
+import { Wrapper } from './wrapper';
 
 describe('test test', () => {
   it('get greetin', () => {
@@ -122,6 +124,68 @@ describe('test test', () => {
       // assert
       assert.strictEqual(p1Address, 'Marcus, 1972');
       assert.strictEqual(p2Address, 'David, 1975');
+    });
+    it('uses union types to allow null', () => {
+      // act
+      const result1 = printThis(undefined);
+      const result2 = printThis(null);
+
+      // assert
+      assert.strictEqual(result1, 'no person supplied');
+      assert.strictEqual(result2, 'no person supplied');
+    });
+    it('optional parameters', () => {
+      // act
+      const sum = optionallyAdd(1, 2, 3, 4, 5);
+
+      // assert
+      assert.strictEqual(sum, 3);
+    });
+    it('rest parameters - print names', () => {
+      // act
+      const greeting1 = greetPeople('Hello');
+      const greeting2 = greetPeople('Hello', 'Marcus');
+      const greeting3 = greetPeople('Hello', 'Marcus', 'Dasha');
+      const greeting4 = greetPeople('Hello', 'Marcus', 'Dasha', 'David');
+      const greeting5 = greetPeople('Hello', 'Marcus', 'Dasha', 'David', 'Julia', 'Wietse', 'Lucas');
+
+      // assert
+      assert.strictEqual(greeting1, 'Hello');
+      assert.strictEqual(greeting2, 'Hello Marcus');
+      assert.strictEqual(greeting3, 'Hello Marcus and Dasha');
+      assert.strictEqual(greeting4, 'Hello Marcus and Dasha and David');
+      assert.strictEqual(greeting5, 'Hello Marcus and Dasha and David and Julia and Wietse and Lucas');
+    });
+    describe('generics', () => {
+      it('add to list', () => {
+        // arrange
+        const listOfPeople : IPerson[] = [
+          { name: 'Marcus', birthYear: 1972 },
+        ];
+        const listOfAddresses : Address[] = [
+          { street: 'Strålgatan', streetNo: 23, city: 'Stockholm' },
+          { street: 'SchraeschazschStrasse', streetNo: 2, city: 'Amsterdam' },
+        ];
+        // act
+        const numberOfPeople = addToStart<IPerson>(listOfPeople, { name: 'David', birthYear: 1975 });
+        const numberOfAddresses = addToStart<Address>(listOfAddresses, { street: 'Champs Elysee', streetNo: 1, city: 'Paris'});
+        // assert
+        assert.strictEqual(numberOfPeople[0].name, 'David');
+        assert.strictEqual(numberOfAddresses[0].city, 'Paris');
+      });
+      it('wrapper for addresses', () => {
+        // arrange
+        const listOfAddresses : Address[] = [
+          { street: 'Strålgatan', streetNo: 23, city: 'Stockholm' },
+          { street: 'SchraeschazschStrasse', streetNo: 2, city: 'Amsterdam' },
+          { street: 'Champs Elysee', streetNo: 1, city: 'Paris' },
+        ];
+        // act
+        const list = new Wrapper<Address>(listOfAddresses);
+        // assert
+        assert.strictEqual(list.getFirst().city, 'Stockholm');
+        assert.strictEqual(list.getLast().city, 'Paris');
+      });
     });
   });
 });

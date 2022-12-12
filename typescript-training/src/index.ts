@@ -73,11 +73,34 @@ interface IPerson {
   birthYear: number,
 }
 
-function getPersonNameString(p:IPerson) : string {
-  return `${p.name}, ${p.birthYear.toString()}`;
+const printThis = (p: Person | undefined | null) => {
+  if (!p) { return 'no person supplied'; } return p.name;
+};
+
+const getPersonNameString = (p:IPerson) => `${p.name}, ${p.birthYear.toString()}`;
+
+const optionallyAdd = (num1:number, num2:number, num3?:number, num4?:number, num5?:number) => {
+  const sum = num1 + num2;
+  // if (num3) {
+  //   sum += num3;
+  // }
+  // if (num4) {
+  //   sum += num4;
+  // }
+  // if (num5) {
+  //   sum += num5;
+  // }
+  return sum;
+};
+
+const greetPeople = (greeting : string, ...names :string[]) => `${greeting} ${names.join(' and ')}`.trim();
+
+function addToStart<T>(array:T[], elementToAdd: T) : T[] {
+  return [elementToAdd, ...array];
 }
 
 export {
   greet, isOld, countOdd, divisibleBy3, sumEven, Address,
-  Person, getPersonStreetNo, PersonClass, IPerson, getPersonNameString,
+  Person, getPersonStreetNo, PersonClass, IPerson, getPersonNameString, printThis,
+  optionallyAdd, greetPeople, addToStart,
 };
