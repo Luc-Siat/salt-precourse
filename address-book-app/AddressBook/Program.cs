@@ -3,15 +3,19 @@ using AddressBook.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddCors(options =>
-// {
-//     options.AddDefaultPolicy(
-//         policy  =>
-//         {
-//             policy.WithOrigins("http://127.0.0.1",
-//                                 "http://localhost:5001");
-//         });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+          builder => builder
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .SetIsOriginAllowed((host) => true)
+            .AllowAnyHeader());
+});
+// app.options('/*', (_, res) => {
+//     res.sendStatus(200);
 // });
+
 // Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
 // Add services to the container.
@@ -26,8 +30,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,6 +44,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors();
+
+
+
 
 app.UseAuthorization();
 

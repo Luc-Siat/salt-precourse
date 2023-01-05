@@ -25,3 +25,8 @@
 /home/luc/salt/precourse/address-book-app/AddressBook/obj/Debug/net6.0/AddressBook.pdb
 /home/luc/salt/precourse/address-book-app/AddressBook/obj/Debug/net6.0/AddressBook.genruntimeconfig.cache
 /home/luc/salt/precourse/address-book-app/AddressBook/obj/Debug/net6.0/ref/AddressBook.dll
+/home/luc/salt/precourse/address-book-app/AddressBook/bin/Debug/net6.0/selenium-manager/linux/selenium-manager
+/home/luc/salt/precourse/address-book-app/AddressBook/bin/Debug/net6.0/selenium-manager/macos/selenium-manager
+/home/luc/salt/precourse/address-book-app/AddressBook/bin/Debug/net6.0/selenium-manager/windows/selenium-manager.exe
+/home/luc/salt/precourse/address-book-app/AddressBook/bin/Debug/net6.0/Newtonsoft.Json.dll
+/home/luc/salt/precourse/address-book-app/AddressBook/bin/Debug/net6.0/WebDriver.dll

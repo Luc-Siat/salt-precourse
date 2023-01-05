@@ -35,7 +35,7 @@ function printData(data){
 }
 
 function getAddresses() {
-  fetch('http://localhost:5001/api/Addresses')
+  fetch('https://localhost:5001/api/Addresses')
   .then(response => response.json())
   // .then(data => console.log(data))
   .then(data => {
@@ -49,7 +49,7 @@ getAddresses();
 
 
 function getDetails(addressId){
-  fetch(`http://localhost:5001/api/Addresses/id/${addressId}`)
+  fetch(`https://localhost:5001/api/Addresses/id/${addressId}`)
   .then(response => response.json())
   .then(data => {
     // console.log(data)
@@ -75,7 +75,7 @@ allAddresses.addEventListener('click', () => {
 // SEARCH AN ADDRESS
 
 function searchAddress(searchInput){
-  fetch(`http://localhost:5001/api/Addresses/search/${searchInput}`)
+  fetch(`https://localhost:5001/api/Addresses/search/${searchInput}`)
   .then(response => response.json())
   .then(data => {
     printData(data);
@@ -104,7 +104,7 @@ createAddressButton.addEventListener('click', (event) => {
   // const formData = new FormData(form);
 
 
-  fetch('http://localhost:5001/api/Addresses', {
+  fetch('https://localhost:5001/api/Addresses', {
     method: 'POST',
     headers: {
       'accept': '*/*',
